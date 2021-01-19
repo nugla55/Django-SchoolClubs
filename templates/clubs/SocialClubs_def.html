@@ -1,0 +1,108 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid " style="padding-top: 50px;padding-right: 10%; padding-left: 10%">
+        <div class="row">
+            <!-- My clubs / All Clubs -->
+            <div class="col-md-3 " >
+                    <!-- My clubs -->
+                    <div class="card bg-lightgray" style="min-height: 50px; max-height: 300px;
+                     width: 96%; margin: 2%; border: 2px double black">
+                        <div class="card-header text-center mb-1" style="background-color: #597eaa">
+                            <h5>My Clubs</h5>
+                        </div>
+
+
+
+
+                        <div class="card-body" style="overflow: auto">
+                            {% for clubs in myclubs %}
+                                <a class="card link-card mt-1 embed-responsive-16by9 my-club-events" href="{% url 'announcement' clubs.club.id %}">
+                                    <div class="card-body">
+                                        <img src="{{ clubs.club.club_pic.url }}" class="card-img w-15">
+                                        <div class="card-text w-80" style="display: inline-block; float: right">
+                                            <h3 class="">{{ clubs.club.club_name }}</h3>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <!-- All clubs -->
+                    <div class="bg-lightgray card" style="min-height: 50px; max-height: 300px;
+                     width: 96%; margin: 2%; border: 2px double black ">
+                        <div class="card-header text-center mb-1" style="background-color: #597eaa">
+                            <h5>All Clubs</h5>
+                        </div>
+
+                        <div class="card-body h-75" style="overflow: auto">
+                            {% for clubs in allclubs %}
+                                <a class="card link-card mt-1 embed-responsive-16by9 my-club-events" href="{% url 'announcement' clubs.id %}">
+                                    <div class="card-body">
+                                        <img src="{{ clubs.club_pic.url }}" class="card-img w-15">
+                                        <div class="card-text w-80" style="display: inline-block; float: right">
+                                            <h3 class="">{{ clubs.club_name }}</h3>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+            </div>
+
+
+
+
+            <!-- Clubs -->
+            <div class="col-md-7">
+                <div style="width: 100%; height: 600px; position: relative" id="maincontainer">
+                    <div class="container-fluid h-100" style="background-color: #ddd; border-radius: 5%; border: 2px solid darkgrey">
+                        <div style="margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        <h3 style="text-align: center;">Please pick any club from left</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- Events -->
+            <div class="col-md-2">
+                <div class="card-mb-4 bg-lightgray mt-5" style="min-height: 50px; max-height: 450px;overflow: auto;
+                     width: 96%; margin: 2%; border: 2px double black;">
+                    <div class="card w-100 h-100" style="border: 2px double #aaa;">
+                    <div class="card-header text-center" style="background-color: #597eaa">
+                        <h5>Events</h5>
+                    </div>
+
+                    {% for event in events %}
+                        <a class="card link-card mt-1 mx-1 px-1 pt-1 pb-1 embed-responsive-16by9 my-club-events" href="{% url 'eventPage' event.id %}">
+                            <img class="card-img-top w-100 bg-primary" height="80" src="{% static 'images/university_icon.png' %}">
+                            <div class="card-text w-100 mx-2" style="line-height: normal; float: right; overflow: auto">
+                                <ul class="no-bullets">
+                                    <li style="font-size: 50%"><h5>{{ event.event_name }}</h5></li>
+                                    <li>{{ event.content }}</li>
+                                    <li class="fa fa-calendar w-100" > {{event.start_Date }}</li>
+                                    <li class="fa fa-map-marker w-100"> {{ event.location }}</li>
+                                </ul>
+                            </div>
+                        </a>
+                    {% endfor %}
+
+
+                </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

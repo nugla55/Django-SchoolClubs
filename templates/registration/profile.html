@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+    <style>
+        .profile-pic {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+    </style>
+
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card card-body">
+                <a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Home Page</a>
+                <hr>
+                <h3 style="text-align: center">Account Settings</h3>
+                <hr>
+                {% if request.user.student.profile_pic %}
+                                                    <img src=" {% static request.user.student.profile_pic.url %}"
+                                                         class="profile-pic img-responsive" alt="post_img"
+                                                         style="height: 225px; width: 100%; display: block;">
+                                                {% endif %}
+
+
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card card-body">
+
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <input class="btn btn-primary" type="submit" name="Update Information">
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <h1>Reservations</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">Delivery Date</th>
+            <th scope="col">Car</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.reservationDate }}</td>
+                <td>{{ reservation.receiveDate }}</td>
+                <td>{{ reservation.deliveryDate }}</td>
+                <td>{{ reservation.car }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+{% endblock %}

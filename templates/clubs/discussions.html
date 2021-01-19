@@ -1,0 +1,32 @@
+{% extends 'clubs/SocialClubs.html' %}
+{% load static %}
+
+{% block content2 %}
+    <div class="container-fluid h-100" style="background-color: #597eaa;border-radius: 1%;
+    border: 2px solid black;min-height: 150px; max-height: 305px;overflow: auto">
+
+        {% if request.user.student == club.club.administration.president or request.user.student == club.club.administration.vicePresident or request.user.student == club.club.administration.secretary%}
+            <a class="btn btn-add w-50 fa fa-plus" style="height: 40px" href="{% url 'addDiscussion' club.club.id %}">   Add</a>
+        {% endif %}
+
+        {% for discussion in discussions %}
+            <div class="card pt-3" style="height: 160px;margin-bottom: 5px; overflow: auto; background-color: #eee" href="#" >
+                <h4 class="card-header"  style="color: darkblue">{{ discussion.topic }}</h4>
+                <div class="card-body">
+                    <p class="card-text"> {{ discussion.context }}</p>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <small class="text-muted" style="font-size: 1em">{{ discussion.start_date }}</small>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary btn-join">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+
+
+
+
+    </div>
+{% endblock %}

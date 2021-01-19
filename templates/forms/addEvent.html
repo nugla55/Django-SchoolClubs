@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+
+<div class="main-form2 px-3 col-lg-5 mt-3">
+    <h3 class="text-center pt-3"> Add Event</h3>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+      <div class="px-3 pt-3 pb-3 border-black" style="background-color: #597eaa; height: 100px">
+          <div class="form-group">
+            <label for="event_name">Event Name:</label>
+            {{ form.event_name }}
+          </div>
+      </div>
+
+      <div class="px-3 pt-3 pb-3 border-black mt-3" style="background-color: #597eaa; height: 200px; overflow: auto">
+          <div class="form-group h-100">
+            <label for="Content">Content.:</label>
+            {{ form.content }}
+          </div>
+      </div>
+
+        <div class="px-3 pt-3 pb-3 border-black mt-3" style="background-color: #597eaa; height: auto; overflow: auto">
+          <div class="pb-2 bx-2">
+              <label class="w-25 display-inline"  for="event_desc">location:</label>
+              {{ form.location }}
+          </div>
+
+          <div class="">
+              <label class="w-25 display-inline"  for="event_desc">date:</label>
+              {{ form.until_date }}
+          </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-submit" style="">Add</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-md-3 pt-2"
+                 style="overflow: auto;height: 500px;background-color: #597eaa; border-radius: 5%">
+                <a class="btn btn-submit w-100" style="background-color: yellow" href="{% url 'addClub' %}">Create Club</a>
+                {% for clubs in clubs %}
+                    <a class="card link-card mt-1 embed-responsive-16by9 my-club-events"
+                       href="{% url 'manage_club' clubs.id %}">
+                        <div class="card-body">
+                            <img src="{{ clubs.club_pic.url }}" class="card-img w-15">
+                            <div class="card-text w-80" style="display: inline-block; float: right">
+                                <h3 class="">{{ clubs.club_name }}</h3>
+                            </div>
+
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6" style="height: 500px">
+                <div class="h-100" style="border-radius: 5%; border: 2px solid lightgray; overflow: auto">
+                    {% block content5 %}
+                    {% endblock %}
+                </div>
+            </div>
+
+            <div class="col-md-3 card" style="background-color: #ccc;border-radius: 5%;height: 500px; overflow: auto">
+                <div class="card-header text-center mb-1" style="background-color: #597eaa">
+                    <h5>Reports</h5>
+                </div>
+
+                <div class="card-body h-75" >
+                    {% for report in reports %}
+                        <a class="card link-card mt-2 my-club-events bg-danger" href="">
+                            <h3 class="card-header"> {{ report.title }}</h3>
+                            <div class="card-body">
+                                <p class="card-text w-100"> {{ report.content }} </p>
+                                <p class="card-text w-100"> {{ report.start_date }}</p>
+                            </div>
+                        </a>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

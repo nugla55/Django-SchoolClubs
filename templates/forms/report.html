@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+
+<div class="main-form2 px-3 col-lg-5 mt-3 pb-3" style="height: auto">
+    <h3 class="text-center pt-3"> Report</h3>
+
+    <form action="/action_page.php">
+      <div class="px-3 pt-3 pb-3 border-black" style="background-color: #597eaa; height: 100px">
+          <div class="form-group ">
+            <label for="event_name">Report Topic:</label>
+            <input type="text" class="form-control mt-1" id="event_name" placeholder="Report Topic...">
+          </div>
+      </div>
+
+      <div class="px-3 pt-3 pb-3 border-black mt-3" style="background-color: #597eaa; height: 200px; overflow: auto">
+          <div class="form-group h-100">
+            <label for="event_desc">Report issue:</label>
+            <textarea type="textarea" class="form-control h-85 mt-1" id="event_desc" placeholder="Report issue..."></textarea>
+          </div>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-report" >Report</button>
+    </form>
+</div>
+
+{% endblock %}

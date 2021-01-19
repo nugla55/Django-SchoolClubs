@@ -1,0 +1,91 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+    <!------ Include the above in your HEAD tag ---------->
+    <style>
+        .emp-profile{
+            padding: 3%;
+            margin-top: 3%;
+            margin-bottom: 3%;
+            border-radius: 0.5rem;
+            background: #fff;
+        }
+        .profile-img{
+            text-align: center;
+            width: 80%;
+        }
+        .profile-img img{
+            width: 70%;
+            height: 70%;
+        }
+        .profile-head h5{
+            color: #333;
+        }
+        .profile-head h6{
+            color: #0062cc;
+        }
+    </style>
+    <div class="container emp-profile">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    {% if club.club_pic %}
+                                    <img src=" {% static club.club_pic.url %}"
+                                         class=" img-responsive" alt="Club Photo"
+                                         style="height: 225px; width: 100%; display: block;">
+                                {% endif %}
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        {{ club.club_name }}
+                    </h5>
+                    <h6>
+                        <strong>Club President :</strong> {{ club.administration.president.first_name }} {{ club.administration.president.last_name }}
+                    </h6>
+                    <p><strong>Advisor: </strong>{{ club.advisor.first_name }} {{ club.advisor.last_name }}</p>
+                    <p><strong>Number of Club Members :</strong> {{ count }}</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="col-md-6">
+                    <label><strong>VicePresident</strong></label>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ club.administration.vicePresident.first_name }} {{ club.administration.vicePresident.last_name }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label><strong>Agent</strong></label>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ club.administration.agent.first_name }} {{ club.administration.agent.last_name }}</p>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-md-6">
+                    <label><strong>Accountant</strong></label>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ club.administration.accountant.first_name }} {{ club.administration.accountant.last_name }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label><strong>Secretary</strong></label>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ club.administration.secretary.first_name }} {{ club.administration.secretary.last_name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

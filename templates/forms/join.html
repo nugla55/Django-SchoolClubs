@@ -1,0 +1,41 @@
+
+
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+
+<div class="main-form2 px-3 col-lg-5 mt-3 pb-3" style="height: auto;">
+    <h3 class="text-center pt-3">Join</h3>
+
+    <form action="/action_page.php">
+        <div class="px-3 pt-3 pb-3 border-black mt-3" style="background-color: #597eaa; height: auto; overflow: auto">
+          <div class="pb-2 bx-2">
+              <div class="mt-2 mb-2">
+                <label class="w-25 display-inline"  for="event_desc">Name:</label>
+                <input class="form-control display-inline w-70" id="sel1" type="text" placeholder="Name...">
+              </div>
+              <div class="mt-2 mb-2">
+                <label class="w-25 display-inline"  for="event_desc">Surname:</label>
+                <input class="form-control display-inline w-70" id="sel1" type="text" placeholder="Surname...">
+              </div>
+              <div class="mt-2 mb-2">
+                <label class="w-25 display-inline"  for="event_desc">ID:</label>
+                <input class="form-control display-inline w-70" id="sel1" type="text" placeholder="ID...">
+              </div>
+              <div class="mt-2 mb-2">
+                <label class="w-25 display-inline"  for="event_desc">Department:</label>
+                <input class="form-control display-inline w-70" id="sel1" type="text" placeholder="Department...">
+              </div>
+          </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-submit" >Join</button>
+    </form>
+</div>
+
+{% endblock %}

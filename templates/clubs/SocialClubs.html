@@ -1,0 +1,194 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+        <style>
+    *{
+        box-sizing: border-box;
+    }
+    .flex-container {
+                display: flex;
+                flex-wrap: nowrap;
+            }
+    .clearfix ::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+    </style>
+    <div class="container-fluid flex-container clearfix " style="padding-top: 50px;padding-right: 10%; padding-left: 10%">
+        <div class="row">
+            <!-- My clubs / All Clubs -->
+            <div class="col-md-3 " >
+                    <!-- My clubs -->
+                    <div class="card bg-lightgray" style="min-height: 50px; max-height: 300px;
+                     width: 96%; margin: 2%; border: 2px double black">
+                        <div class="card-header text-center mb-1" style="background-color: #597eaa">
+                            <h5>My Clubs</h5>
+                        </div>
+
+
+
+
+                        <div class="card-body" style="overflow: auto">
+                            {% for clubs in myclubs %}
+                                <a class="card link-card mt-1 embed-responsive-16by9 my-club-events" href="{% url 'announcement' clubs.club.id %}">
+                                    <div class="card-body">
+                                        <img src="{{ clubs.club.club_pic.url }}" class="card-img w-15">
+                                        <div class="card-text w-80" style="display: inline-block; float: right">
+                                            <h3 class="">{{ clubs.club.club_name }}</h3>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <!-- All clubs -->
+                    <div class="bg-lightgray card" style="min-height: 50px; max-height: 300px;
+                     width: 96%; margin: 2%; border: 2px double black ">
+                        <div class="card-header text-center mb-1" style="background-color: #597eaa">
+                            <h5>All Clubs</h5>
+                        </div>
+
+                        <div class="card-body h-75" style="overflow: auto">
+                            {% for clubs in allclubs %}
+                                <a class="card link-card mt-1 embed-responsive-16by9 my-club-events" href="{% url 'announcement' clubs.id %}">
+                                    <div class="card-body">
+                                        <img src="{{ clubs.club_pic.url }}" class="card-img w-15">
+                                        <div class="card-text w-80" style="display: inline-block; float: right">
+                                            <h3 class="">{{ clubs.club_name }}</h3>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+            </div>
+
+
+
+
+            <!-- Clubs -->
+            <div class="col-md-7">
+                <div style="width: 100%; height: 600px;" id="maincontainer">
+                    <div class="container-fluid h-100" style="background-color: #ddd; border-radius: 5%; border: 2px solid darkgrey">
+                        <div class="row h-30 overflow-auto" id="mainrow">
+                            <!-- icon -->
+                            <div class="col-lg-3 pt-2" style="overflow: auto;">
+                                {% if club.club.club_pic %}
+                                    <img src=" {% static club.club.club_pic.url %}"
+                                         class=" img-responsive" alt="post_img"
+                                         style=" width: 100%; display: inline-block;">
+                                {% endif %}
+                            </div>
+
+                            <!--Name -->
+                            <div class="col-lg-7 club-info">
+                                <h2 style="margin-left: 20px">{{ club.club.club_name }}</h2>
+                                <div style="line-height: normal">
+                                    <p class="fa fa-envelope w-100"><a href="mailto: {{ club.club.email }}" style="margin-left: 4px;">{{ club.club.email }}</a></p>
+                                    <p class="fa fa-instagram w-100"><a href="#" style="margin-left: 4px">@instagram</a></p>
+                                    <p class="fa fa-user w-100"> {{ club.club.administration.president.first_name }} {{ club.club.administration.president.last_name }} </p>
+                                </div>
+                            </div>
+
+
+                            <!--Buttons -->
+                            <div class="col-lg-2" style="padding-top: 10px">
+                                <a class="btn btn-club fa fa-flag bg-danger" href="{% url 'report' %}">   Report</a>
+                                <a class="btn btn-club fa fa-search bg-info" href="{% url 'clubDetail' club.club.id %}">   Info</a>
+
+                                {% if club in myclubs %}
+                                    {% if request.user.student == club.club.administration.president  %}
+                                        <h6>you are a president of this club</h6>
+                                        {% elif request.user.student == club.club.administration.vicePresident %}
+                                        <h6>you are a vice president of this club</h6>
+                                    {% else %}
+                                        <a class="btn btn-club fa fa-sign-in bg-danger" href="{% url 'leave' club.club.id %}">   Leave</a>
+
+                                    {% endif %}
+                                {% else %}
+                                    <a class="btn btn-club fa fa-sign-in bg-success" href="{% url 'join' club.club.id %}">   Join</a>
+                                {% endif %}
+
+
+
+                            </div>
+                        </div>
+
+                        <!-- Tabs -->
+                        <div class="row h-10" style="padding-top: 10px; ">
+                            <nav class="navbar navbar-expand navbar-dark h-80" aria-label="Second navbar example"
+                            style="background-color: #597eaa; border-radius: 5px; border: 2px solid black;">
+                                <div class="container-fluid w-100">
+                                  <div class="collapse navbar-collapse" id="navbarsExample02">
+                                    <ul class="navbar-nav me-auto w-100">
+                                      <li class="nav-item active w-25">
+                                        <a class="nav-link"  href="{% url 'announcement' club.club.id %}">Announcements</a>
+                                      </li>
+                                      <li class="nav-item w-25">
+                                        <a class="nav-link"  href="{% url 'post' club.club.id %}">Posts</a>
+                                      </li>
+                                        <li class="nav-item w-25">
+                                        <a class="nav-link" href="">Chat</a>
+                                      </li>
+                                        <li class="nav-item w-25">
+                                        <a class="nav-link" href="{% url 'survey' club.club.id %}">Survey</a>
+                                      </li>
+                                        <li class="nav-item w-25">
+                                        <a class="nav-link" href="{% url 'discussion' club.club.id %}">Discussion</a></a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </nav>
+                        </div>
+
+                        <!-- contents -->
+                        <div class="row social-content">
+                            {% block content2 %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- Events -->
+            <div class="col-md-2">
+                <div class="card-mb-4 bg-lightgray mt-5" style="min-height: 50px; max-height: 450px;overflow: auto;
+                     width: 96%; margin: 2%; border: 2px double black;">
+                    <div class="card w-100 h-100" style="border: 2px double #aaa;">
+                    <div class="card-header text-center" style="background-color: #597eaa">
+                        <h5>Events</h5>
+                    </div>
+                    {% for event in events %}
+                        <a class="card link-card mt-1 mx-1 px-1 pt-1 pb-1 embed-responsive-16by9 my-club-events" href="{% url 'eventPage' event.id %}">
+                            <img class="card-img-top w-100 bg-primary" height="80" src="{% static 'images/university_icon.png' %}">
+                            <div class="card-text w-100 mx-2" style="line-height: normal; float: right; overflow: auto">
+                                <ul class="no-bullets">
+                                    <li style="font-size: 50%"><h5>{{ event.event_name }}</h5></li>
+                                    <li>{{ event.club }}</li>
+                                    <li class="fa fa-calendar w-100" > {{event.start_date }}</li>
+                                    <li class="fa fa-map-marker w-100"> {{ event.location }}</li>
+                                </ul>
+                            </div>
+                        </a>
+                    {% endfor %}
+
+                </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

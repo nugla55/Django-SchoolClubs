@@ -1,0 +1,35 @@
+{% extends 'clubs/SocialClubs.html' %}
+{% load static %}
+
+{% block content2 %}
+
+
+    <div class="container-fluid h-100 pb-2" style="background-color: #597eaa;border-radius: 1%;
+    border: 2px solid black;min-height: 150px; max-height: 305px;overflow: auto">
+
+        {% if request.user.student == club.club.administration.president or request.user.student == club.club.administration.vicePresident or request.user.student == club.club.administration.secretary%}
+            <a class="btn btn-add w-50 fa fa-plus" href="{% url 'addEvent' club.club.id  %}">   Add</a>
+        {% endif %}
+
+        {% for events in announcements %}
+
+            <a class="card link-card mt-2" href="{% url 'eventPage' events.id %}">
+                <div class="card-body">
+                    <img src="{% static 'images/facebook.png' %}" class="card-img w-15">
+                    <div class="card-text w-80" style="display: inline-block; float: right">
+                        <h3 class="">{{ events.title }}</h3>
+                        <p> {{ events.content }}</p>
+                        <p class="fa fa-calendar w-100">    {{ events.start_date }}</p>
+                        <p class="fa fa-map-marker w-100">   location</p>
+                    </div>
+
+                </div>
+            </a>
+        {% endfor %}
+
+
+
+
+    </div>
+
+{% endblock %}

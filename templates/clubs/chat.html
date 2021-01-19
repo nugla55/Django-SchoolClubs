@@ -1,0 +1,68 @@
+{% extends 'clubs/SocialClubs.html' %}
+{% load static %}
+
+{% block content2 %}
+    <div class="container-fluid h-100">
+		<div class="row" style="height: 100%;background-color: #597eaa; border: 2px solid black">
+			<div class="col-md-8 col-sm-6 col-12 comments-main  rounded w-100 h-80" style="overflow: auto; padding-top: 10px">
+				<ul class="p-0">
+					<li>
+						<div class="row comments mb-2">
+							<div class="col-md-2 col-sm-2 col-3 text-center user-img">
+						    	<img id="profile-photo" src="{% static 'images/facebook.png' %}" class="rounded-circle" />
+							</div>
+							<div class="col-md-9 col-sm-9 col-9 comment rounded mb-2">
+								<h4 class="m-0"><a href="#">Tye Simmon</a></h4>
+							    <time class="text-white ml-3">1 month ago</time>
+							    <like></like>
+							    <p class="mb-0 text-white">Thank you for visiting all the way from New York.</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+                <ul class="p-0">
+					<li>
+						<div class="row comments mb-2">
+							<div class="col-md-2 col-sm-2 col-3 text-center user-img">
+						    	<img id="profile-photo" src="{% static 'images/facebook.png' %}" class="rounded-circle" />
+							</div>
+							<div class="col-md-9 col-sm-9 col-9 comment rounded mb-2">
+								<h4 class="m-0"><a href="#">Tye Simmon</a></h4>
+							    <time class="text-white ml-3">1 month ago</time>
+							    <like></like>
+							    <p class="mb-0 text-white">Thank you for visiting all the way from New York.</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+                <ul class="p-0">
+						<li>
+							<div class="row comments mb-2">
+								<div class="col-md-2 offset-md-2 col-sm-2 offset-sm-2 col-3 offset-1 text-center user-img">
+							    	<img id="profile-photo" src="http://nicesnippets.com/demo/man02.png" class="rounded-circle" />
+								</div>
+								<div class="col-md-7 col-sm-7 col-8 comment rounded mb-2">
+									<h4 class="m-0"><a href="#">Steve Alex</a></h4>
+								    <time class="text-white ml-3">1 week ago</time>
+								    <like></like>
+								    <p class="mb-0 text-white">Thank you for visiting all the way from NYC.</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+            </div>
+            <div style="height: 20% ">
+
+				<div class="row  p-2 rounded-bottom footer h-100 upper-border-black" style="background-color: #404040;" >
+			  		<div class="col-md-9 col-sm-9 col-9 pr-0 comment-box">
+					  <input type="text" class="form-control" placeholder="comment ...." />
+			  		</div>
+			  		<div class="col-md-3 col-sm-2 col-2 pl-0 text-center send-btn">
+			  			<button class="btn btn-success">Send</button>
+			  		</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

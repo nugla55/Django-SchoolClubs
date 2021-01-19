@@ -1,0 +1,53 @@
+{% extends 'clubs/SocialClubs.html' %}
+{% load static %}
+
+<style>
+
+</style>
+
+{% block content2 %}
+    <div class="album  " style=";overflow: auto; height: 100%; background-color: #597eaa; border: 2px solid black">
+        {% if request.user.student == club.club.administration.president or request.user.student == club.club.administration.vicePresident or request.user.student == club.club.administration.secretary%}
+            <a class="btn btn-add w-50 fa fa-plus" href="{% url 'addSurvey' club.club.id %}">   Add</a>
+        {% endif %}
+
+        <div class="container">
+          <div class="row">
+
+
+              {% for survey in surveys %}
+                  <div class="col-md-4 pt-3">
+                      <div class="card mb-4 box-shadow" style="border: 2px solid darkgrey; border-radius: 5%;background-color: #eee">
+                          <div class="card-body" >
+                              <p class="card-text">{{ survey.question }}</p>
+                              <form>
+                                  <div class="form-check" >
+                                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                                      <label class="form-check-label" for="exampleRadios1">
+                                          {{ survey.element1 }}
+                                      </label>
+                                  </div>
+                                   <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                      <label class="form-check-label" for="exampleRadios2">
+                                          {{ survey.element2 }}
+                                      </label>
+                                   </div>
+                                   <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <div class="btn-group">
+                                          <button type="button" class="btn btn-sm btn-outline-secondary">Vote</button>
+                                        </div>
+                                        <small class="text-muted" style="font-size: 0.5em">{{ survey.end_date }}</small>
+                                   </div>
+                              </form>
+                        </div>
+                      </div>
+                  </div>
+              {% endfor %}
+
+
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

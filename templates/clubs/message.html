@@ -1,0 +1,115 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.sendbox {
+
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: red;
+   color: white;
+   text-align: center;
+}
+
+
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+.a{
+        border: 1px solid
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="a" style="width:400px; height:800px ; float: left">
+<div style="width:392px; height:100px ;border: 1px solid ; margin: 3px ; float: left;"> </div>
+    <div style="width:392px; height:100px ;border: 1px solid ; margin: 3px ; float: left;"> </div>
+    <div style="width:392px; height:100px ;border: 1px solid ; margin: 3px ; float: left;"> </div>
+    <div style="width:392px; height:100px ;border: 1px solid ; margin: 3px ; float: left;"> </div>
+    <div style="width:392px; height:100px ;border: 1px solid ; margin: 3px ; float: left;"> </div>
+        <div style="width:392px; height:100px ;border: 1px solid ; margin: 3px ; float: left;"> </div>
+    <div style="width:392px; height:100px ;border: 1px solid ; margin: 3px ; float: left;"> </div>
+
+</div>
+<div style=" margin: auto ; float: left">
+
+<div class="container">
+  <img src="https://lh3.googleusercontent.com/proxy/UaSGNKb0No2Mwjo1OfkRFKHGImnbjitFZJTHTQEiFCKVRscylv5__BZsh4NBzeIGDTBwzfuLwH-IqvnXV1L9Rs_Tg_W7r5_O9CLl6BjnDMVIPSgvDMii8u92Jt4m1PTc1kYWSotM" alt="Avatar" style="width:100%">
+  <p>Hello. How are you today?</p>
+  <span class="time-right">24/12/2020 11:00</span>
+</div>
+
+<div class="container darker">
+  <img src="cat.jpeg" alt="Avatar" class="right" style="width:100%;">
+  <p>Hey! I'm fine. Thanks for asking!</p>
+  <span class="time-left">24/12/2020 11:01</span>
+</div>
+
+<div class="container">
+  <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+  <p>Sweet! So, what do you wanna do today?</p>
+  <span class="time-right">24/12/2020 11:02</span>
+</div>
+
+<div class="container darker">
+  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+  <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+  <span class="time-left">24/12/2020 11:05</span>
+</div>
+    <div class="sendbox">
+<textarea dir="auto" data-region="send-message-txt" class="form-control bg-light" rows="3" data-auto-rows="" data-min-rows="3" data-max-rows="5" aria-label="Write a message..." placeholder="Write a message..." style="resize: none" id="yui_3_17_2_1_1608751942642_39"></textarea>
+    </div>
+
+    </div>
+</body>
+</html>
+{% endblock %}

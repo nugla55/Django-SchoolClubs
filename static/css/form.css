@@ -1,0 +1,71 @@
+.main-form2{
+        width: 450px;
+        height: 600px;
+        background-color: #eee;
+        border: 2px solid darkgray;
+        border-radius: 5px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .border-black{
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+
+    .h-85{
+        height: 85%;
+    }
+
+    .display-inline{
+        display: inline-block;
+    }
+
+    .w-70{
+        width: 70%;
+    }
+
+    .btn-submit{
+        background-color: #93c47d;
+        border-radius: 5px;
+        border: 2px solid black;
+        width: 100%;
+    }
+
+    .btn-submit:hover{
+        background-color: #4CAF50;
+    }
+
+    .btn-blue{
+        background-color: #00addf;
+        border-radius: 5px;
+        border: 2px solid black;
+        width: 50%;
+        margin-top: 1em;
+        margin-left: 5em;
+    }
+
+    .btn-blue:hover{
+        background-color: lightgray;
+    }
+
+    .btn-report{
+        background-color: indianred;
+        border-radius: 5px;
+        border: 2px solid black;
+        width: 50%;
+        margin-top: 1em;
+        margin-left: 5em;
+    }
+
+    .btn-report:hover{
+        background-color: red;
+    }
+
+    .img-event{
+        height: 150px;
+        width: 150px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }

@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    <div class="album  ">
+
+        <div class="container">
+          <div class="row pt-3">
+
+            {% for event in allevents %}
+                <div class="col-md-4">
+                  <div class="card mb-4 box-shadow">
+                    <a href="{% url 'eventPage' event.id %}"><img src="{% static 'images/isik.jpg' %}" class="card-img-top"  alt="post_img" style="height: 225px; width: 100%; display: block;"></a>
+                    <h3 class="card-header">{{ event.event_name }}</h3>
+                    <div class="card-body">
+                      <p class="card-text fa fa-user-circle w-100" style="font-size: 1em"> <b>Location:</b> {{ event.location }}</p>
+                      <p class="card-text fa fa-user w-100" style="font-size: 1em"> <b>Club:</b> {{ event.club }}</p>
+                      <p class="card-text fa fa-address-book w-100" style="font-size: 1em"> <b>Publisher:</b> {{ event.publisher }}</p>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+{% endblock %}

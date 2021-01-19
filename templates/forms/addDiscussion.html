@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+
+<div class="main-form2 px-3 col-lg-5 mt-3 pb-3" style="height: auto">
+    <h3 class="text-center pt-3"> Add Discussion</h3>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="px-3 pt-3 pb-3 border-black" style="background-color: #597eaa; height: 100px">
+            <div class="form-group ">
+                <label class="w-100 pb-2">Discussion Topic:</label>
+                {{ form.topic }}
+            </div>
+        </div>
+
+      <div class="px-3 pt-3 pb-3 border-black mt-3" style="background-color: #597eaa; height: 200px; overflow: auto">
+          <div class="form-group h-100">
+              <label for="event_desc">Discussion statement:</label>
+              {{ form.content }}
+          </div>
+      </div>
+
+
+
+      <div class="mt-3 w-50" style="margin: 0 auto">
+          <input class="btn btn-submit"  type="submit" value="Add">
+      </div>
+    </form>
+</div>
+
+{% endblock %}

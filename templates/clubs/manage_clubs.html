@@ -1,0 +1,49 @@
+{% extends 'clubs/home_admin.html' %}
+
+{% block content5 %}
+
+    <div class="container-fluid">
+        <div class="card">
+            <img src="{{ club.get_photo_url }}" class="img-responsive thumbnail " alt="img"
+                 style="height: 200px; width: 200px; margin-left: auto; margin-right: auto; display: block">
+            <h3 class="card-header"> {{ club.club_name }}</h3>
+            <div class="card-body">
+                <h5 class="card-header"> Administration </h5>
+                <p class="card-text w-100"><b>President:</b> {{ club.administration.president }}</p>
+                <p class="card-text w-100"><b>Vice President:</b> {{ club.administration.vicePresident }}</p>
+                <p class="card-text w-100"><b>Agent:</b> {{ club.administration.agent }}</p>
+                <p class="card-text w-100"><b>Accountant:</b> {{ club.administration.accountant }}</p>
+                <p class="card-text w-100"><b>Secretary:</b> {{ club.administration.secretary }}</p>
+                <p class="card-text w-100"><b>Advisor:</b> {{ club.advisor.first_name }} {{ club.advisor.last_name }}</p>
+                <p class="card-text w-100"><b>Mail:</b> <a href="#">{{ club.email }}</a></p>
+            </div>
+
+            <div class="card-body" style="overflow: auto; height: 250px">
+                <h5 class="card-header"> Participants </h5>
+            <table class="w-100">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mail</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for student in students %}
+                        <tr>
+                            <td> {{ student.student.first_name }} </td>
+                            <td> {{ student.student.email }}</td>
+                            <td> <a href="#" class="bg-danger" style="text-decoration: none;color: black;">Remove</a> </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            </div>
+
+            <a href="{% url 'removeClub' club.id %}" class="btn bg-danger w-100 mt-2">Remove Club</a>
+        </div>
+    </div>
+
+{% endblock %}
